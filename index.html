@@ -65,6 +65,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: fixed;
     }
 
     .modal-container {
@@ -124,7 +125,8 @@
           <div class="modal-container" @click="(e)=> e.stopPropagation()">
             <h4>Редактирование</h4>
             <div><span>Наименование поля: </span>{{ model?.name }}</div>
-            <input type="text" :value="model?.value" @input="changeModelHandler"/>
+            <label for="input">Значение:</label>
+            <input id="input" type="text" :value="model?.value" @input="changeModelHandler"/>
             <div class="modal-container__buttons">
               <button @click="setModel()">Сохранить</button>
               <button @click="closeHandler()">Отменить</button>
@@ -140,7 +142,7 @@
       el: '#main',
       data: {
         model: undefined,
-        items: Array.from({ length: 10 }, (_, i)=> ({
+        items: Array.from({ length: 100 }, (_, i)=> ({
             name: `foo ${i + 1}`,
             value: `bar ${i + 1}`,
         }))
